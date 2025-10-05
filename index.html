@@ -3,29 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mari Rasa - Nikmat Hangat dari Dapur Kami</title>
+    <title>Mari Rasa - Premium Frozen Food & Snacks</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         :root {
-            --primary: #e74c3c;
-            --secondary: #2c3e50;
-            --accent: #f39c12;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
+            --navy: #2C3E50;
+            --gold: #D4AF37;
+            --white: #FFFFFF;
+            --charcoal: #333333;
+            --light-gray: #ECF0F1;
+            --text: #333333;
         }
 
         body {
             background-color: #f9f9f9;
             color: var(--text);
             line-height: 1.6;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .container {
@@ -37,19 +38,20 @@
 
         /* Header & Navigation */
         header {
-            background-color: white;
+            background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
         }
 
         .logo {
@@ -57,15 +59,10 @@
             align-items: center;
         }
 
-        .logo h1 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-left: 10px;
-        }
-
-        .logo i {
-            color: var(--primary);
-            font-size: 1.8rem;
+        .logo-img {
+            height: 60px;
+            width: auto;
+            transition: height 0.3s ease;
         }
 
         .nav-links {
@@ -79,53 +76,81 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--navy);
             font-weight: 500;
             transition: color 0.3s;
+            font-family: 'Open Sans', sans-serif;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--gold);
         }
 
         .mobile-menu {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--navy);
+            transition: color 0.3s;
+        }
+
+        .mobile-menu:hover {
+            color: var(--gold);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             height: 100vh;
             display: flex;
             align-items: center;
             text-align: center;
-            color: white;
+            color: var(--white);
             margin-top: 80px;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            animation: fadeInUp 1s ease;
         }
 
         .hero h2 {
+            font-family: 'Raleway', sans-serif;
             font-size: 3rem;
             margin-bottom: 20px;
+            font-weight: 600;
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--primary);
-            color: white;
+            background-color: var(--gold);
+            color: var(--white);
             padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
@@ -134,12 +159,30 @@
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
-            background-color: #c0392b;
+            background-color: #b8941f;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         /* About Section */
@@ -153,11 +196,13 @@
         }
 
         .section-title h2 {
+            font-family: 'Raleway', sans-serif;
             font-size: 2.5rem;
-            color: var(--dark);
+            color: var(--navy);
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
+            font-weight: 600;
         }
 
         .section-title h2::after {
@@ -165,7 +210,7 @@
             position: absolute;
             width: 70px;
             height: 3px;
-            background-color: var(--primary);
+            background-color: var(--gold);
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
@@ -175,6 +220,7 @@
             color: #666;
             max-width: 700px;
             margin: 0 auto;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .about-content {
@@ -188,27 +234,44 @@
         }
 
         .about-text h3 {
+            font-family: 'Raleway', sans-serif;
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--secondary);
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .about-text p {
+            font-family: 'Open Sans', sans-serif;
+            margin-bottom: 15px;
         }
 
         .about-image {
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: translateY(-5px);
         }
 
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
         }
 
         /* Products Section */
         .products {
-            background-color: var(--light);
+            background-color: var(--light-gray);
         }
 
         .product-grid {
@@ -223,10 +286,12 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .product-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
         .product-image {
@@ -250,15 +315,18 @@
         }
 
         .product-info h3 {
+            font-family: 'Raleway', sans-serif;
             font-size: 1.3rem;
             margin-bottom: 10px;
-            color: var(--secondary);
+            color: var(--navy);
+            font-weight: 600;
         }
 
         .product-info p {
             color: #666;
             margin-bottom: 15px;
             font-size: 0.9rem;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .product-price {
@@ -270,8 +338,110 @@
 
         .price {
             font-weight: bold;
-            color: var(--primary);
+            color: var(--gold);
             font-size: 1.2rem;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Platform Section */
+        .platform {
+            background-color: var(--white);
+        }
+
+        .platform-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .platform-category h3 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .platform-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .platform-item {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .platform-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .platform-icon {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .platform-icon img {
+            max-width: 100%;
+            max-height: 50px;
+            object-fit: contain;
+        }
+
+        .platform-info {
+            flex: 1;
+        }
+
+        .platform-info h4 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .platform-info p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .btn-platform {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .btn-platform:hover {
+            background-color: #b8941f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         /* Testimonials */
@@ -286,12 +456,19 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--gold);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
         }
 
         .testimonial-text {
             font-style: italic;
             margin-bottom: 20px;
             color: #555;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .testimonial-author {
@@ -303,27 +480,31 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: #ddd;
+            background-color: var(--navy);
             margin-right: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            color: var(--primary);
+            color: var(--white);
+            font-family: 'Open Sans', sans-serif;
         }
 
         .author-info h4 {
             margin-bottom: 5px;
+            font-family: 'Raleway', sans-serif;
+            color: var(--navy);
         }
 
         .author-info p {
             color: #777;
             font-size: 0.9rem;
+            font-family: 'Open Sans', sans-serif;
         }
 
         /* Contact Section */
         .contact {
-            background-color: var(--dark);
+            background-color: var(--navy);
             color: white;
         }
 
@@ -347,6 +528,7 @@
         .contact-info h3 {
             margin-bottom: 20px;
             font-size: 1.5rem;
+            font-family: 'Raleway', sans-serif;
         }
 
         .contact-details {
@@ -357,16 +539,24 @@
             display: flex;
             align-items: center;
             margin-bottom: 15px;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .contact-item i {
             margin-right: 15px;
-            color: var(--accent);
+            color: var(--gold);
             font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
         }
 
         .contact-form {
             flex: 1;
+        }
+
+        .contact-form h3 {
+            font-family: 'Raleway', sans-serif;
+            margin-bottom: 20px;
         }
 
         .form-group {
@@ -376,6 +566,7 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .form-control {
@@ -385,6 +576,13 @@
             border-radius: 5px;
             background-color: rgba(255,255,255,0.1);
             color: white;
+            font-family: 'Open Sans', sans-serif;
+            transition: background-color 0.3s;
+        }
+
+        .form-control:focus {
+            background-color: rgba(255,255,255,0.2);
+            outline: none;
         }
 
         .form-control::placeholder {
@@ -398,7 +596,7 @@
 
         /* Footer */
         footer {
-            background-color: var(--secondary);
+            background-color: var(--navy);
             color: white;
             padding: 40px 0 20px;
         }
@@ -418,6 +616,7 @@
             font-size: 1.3rem;
             position: relative;
             padding-bottom: 10px;
+            font-family: 'Raleway', sans-serif;
         }
 
         .footer-column h3::after {
@@ -425,7 +624,7 @@
             position: absolute;
             width: 40px;
             height: 2px;
-            background-color: var(--primary);
+            background-color: var(--gold);
             bottom: 0;
             left: 0;
         }
@@ -442,10 +641,11 @@
             color: #ccc;
             text-decoration: none;
             transition: color 0.3s;
+            font-family: 'Open Sans', sans-serif;
         }
 
         .footer-links a:hover {
-            color: var(--primary);
+            color: var(--gold);
         }
 
         .social-links {
@@ -468,7 +668,7 @@
         }
 
         .social-links a:hover {
-            background-color: var(--primary);
+            background-color: var(--gold);
             transform: translateY(-3px);
         }
 
@@ -478,36 +678,210 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #ccc;
             font-size: 0.9rem;
+            font-family: 'Open Sans', sans-serif;
         }
 
-        /* Responsive Design */
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+        }
+
         @media (max-width: 992px) {
-            .about-content, .contact-content {
-                flex-direction: column;
+            .hero h2 {
+                font-size: 2.2rem;
             }
             
-            .hero h2 {
-                font-size: 2.5rem;
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .platform-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .platform-item {
+                padding: 25px;
+            }
+            
+            .about-content, .contact-content {
+                flex-direction: column;
             }
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 12px 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 10px 0;
+                display: block;
             }
             
             .mobile-menu {
                 display: block;
             }
             
+            .hero {
+                height: 80vh;
+                margin-top: 70px;
+                background-attachment: scroll;
+            }
+            
             .hero h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about-content {
+                gap: 30px;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .contact-content {
+                gap: 30px;
+            }
+            
+            .platform-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .platform-icon {
+                width: 70px;
+                height: 70px;
             }
             
             .footer-content {
                 flex-direction: column;
                 gap: 30px;
             }
+            
+            .logo-img {
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .platform-category h3 {
+                font-size: 1.5rem;
+            }
+            
+            .platform-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+        }
+
+        /* Mobile Menu Animation */
+        .nav-links {
+            transition: all 0.3s ease;
+        }
+
+        /* Improved Touch Targets for Mobile */
+        @media (max-width: 768px) {
+            .btn, .btn-platform {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .nav-links a {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Loading Optimization */
+        .logo-img {
+            transition: opacity 0.3s ease;
+        }
+
+        /* Prevent horizontal scroll */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
         }
     </style>
 </head>
@@ -517,13 +891,15 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <i class="fas fa-utensils"></i>
-                    <h1>Mari Rasa</h1>
+                    <img src="Asset/Logo-full-t.png" 
+                         alt="Mari Rasa Logo" 
+                         class="logo-img">
                 </div>
                 <ul class="nav-links">
                     <li><a href="#home">Beranda</a></li>
                     <li><a href="#about">Tentang Kami</a></li>
                     <li><a href="#products">Produk</a></li>
+                    <li><a href="#platform">Beli di Platform</a></li>
                     <li><a href="#testimonials">Testimoni</a></li>
                     <li><a href="#contact">Kontak</a></li>
                 </ul>
@@ -538,7 +914,7 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h2>Nikmat Hangat dari Dapur Kami</h2>
+                <h2>Premium Frozen Food & Snacks</h2>
                 <p>Menikmati hidangan lezat kini lebih mudah. Dim Sum Frozen premium, Risoles Mayo yang lumer, Donat Kentang lembut, dan aneka roti fresh. Pesan online, kami antar sampai depan pintu.</p>
                 <a href="#products" class="btn">Lihat Produk</a>
             </div>
@@ -550,13 +926,13 @@
         <div class="container">
             <div class="section-title">
                 <h2>Tentang Kami</h2>
-                <p>Mari Rasa lahir dari kecintaan akan rasa masakan rumahan yang hangat dan nikmat.</p>
+                <p>Mari Rasa lahir dari kecintaan akan rasa masakan premium yang praktis dan nikmat.</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
                     <h3>Kenapa Memilih Mari Rasa?</h3>
                     <p>Kami berkomitmen menggunakan bahan-bahan pilihan terbaik, diolah secara higienis, dan dikemas dengan baik untuk menjaga cita rasa serta kualitasnya sampai ke tangan Anda.</p>
-                    <p>Setiap produk kami dibuat dengan penuh perhatian dan kasih sayang, seperti memasak untuk keluarga sendiri. Kami percaya bahwa makanan enak tidak harus mahal, tetapi harus selalu berkualitas.</p>
+                    <p>Setiap produk kami dibuat dengan penuh perhatian dan standar premium, seperti menyajikan hidangan untuk keluarga sendiri. Kami percaya bahwa makanan enak harus selalu berkualitas.</p>
                     <p>Dengan pengalaman bertahun-tahun di industri kuliner, kami menghadirkan inovasi rasa yang unik dan menggugah selera.</p>
                     <a href="#contact" class="btn" style="margin-top: 20px;">Hubungi Kami</a>
                 </div>
@@ -572,7 +948,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Produk Kami</h2>
-                <p>Berbagai pilihan makanan lezat siap santap dan frozen food berkualitas</p>
+                <p>Berbagai pilihan makanan lezat siap santap dan frozen food berkualitas premium</p>
             </div>
             <div class="product-grid">
                 <!-- Product 1 -->
@@ -585,7 +961,7 @@
                         <p>Dim sum homemade dengan isian ayam dan udang yang melimpah. Kulitnya tipis dan kenyal. Praktis, cukup kukus selama 10 menit.</p>
                         <div class="product-price">
                             <span class="price">Rp 25.000/pack</span>
-                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Dim%20Sum%20Frozen" class="btn" target="_blank">Pesan Sekarang</a>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Dim%20Sum%20Frozen" class="btn" target="_blank">Pesan</a>
                         </div>
                     </div>
                 </div>
@@ -600,7 +976,7 @@
                         <p>Kulit risoles yang renyah berpadu dengan isian mayo, daging, dan sayuran yang gurih dan lumer. Cocok untuk camilan keluarga.</p>
                         <div class="product-price">
                             <span class="price">Rp 18.000/pack</span>
-                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Risoles%20Mayo" class="btn" target="_blank">Pesan Sekarang</a>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Risoles%20Mayo" class="btn" target="_blank">Pesan</a>
                         </div>
                     </div>
                 </div>
@@ -615,7 +991,7 @@
                         <p>Donat dengan tekstur super lembut dari campuran kentang pilihan. Tersedia dengan berbagai topping menarik.</p>
                         <div class="product-price">
                             <span class="price">Rp 5.000/biji</span>
-                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Donat%20Kentang" class="btn" target="_blank">Pesan Sekarang</a>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Donat%20Kentang" class="btn" target="_blank">Pesan</a>
                         </div>
                     </div>
                 </div>
@@ -630,7 +1006,7 @@
                         <p>Roti soft yang membungkus sosis sapi berkualitas, dengan olesan saus mayo dan saus tomat. Sempurna untuk sarapan atau bekal.</p>
                         <div class="product-price">
                             <span class="price">Rp 10.000/biji</span>
-                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Roti%20Sosis" class="btn" target="_blank">Pesan Sekarang</a>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Roti%20Sosis" class="btn" target="_blank">Pesan</a>
                         </div>
                     </div>
                 </div>
@@ -645,7 +1021,7 @@
                         <p>Roti dengan taburan keju parut yang melimpah dan gurih. Simple namun selalu bikin ketagihan.</p>
                         <div class="product-price">
                             <span class="price">Rp 8.000/biji</span>
-                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Roti%20Keju" class="btn" target="_blank">Pesan Sekarang</a>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Roti%20Keju" class="btn" target="_blank">Pesan</a>
                         </div>
                     </div>
                 </div>
@@ -660,13 +1036,102 @@
                         <p>Perpaduan unik keju gurih dan krim anggur manis dalam satu gigitan. Rasanya yang creamy dan manis-gurih pasti disukai.</p>
                         <div class="product-price">
                             <span class="price">Rp 9.000/biji</span>
-                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Roti%20Krim%20Keju%20Anggur" class="btn" target="_blank">Pesan Sekarang</a>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Roti%20Krim%20Keju%20Anggur" class="btn" target="_blank">Pesan</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+   <!-- Platform Section -->
+<section class="section platform" id="platform">
+    <div class="container">
+        <div class="section-title">
+            <h2>Beli di Platform Favorit Anda</h2>
+            <p>Tersedia di berbagai platform e-commerce dan food delivery</p>
+        </div>
+        <div class="platform-grid">
+            <!-- E-commerce Platforms -->
+            <div class="platform-category">
+                <h3>E-Commerce</h3>
+                <div class="platform-items">
+                    <div class="platform-item">
+                        <div class="platform-icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopee_logo.svg/1442px-Shopee_logo.svg.png" alt="Shopee">
+                        </div>
+                        <div class="platform-info">
+                            <h4>Shopee</h4>
+                            <p>Beli produk kami di official store Shopee</p>
+                            <a href="https://shopee.co.id" class="btn-platform" target="_blank">Kunjungi Shopee</a>
+                        </div>
+                    </div>
+                    
+                    <div class="platform-item">
+                        <div class="platform-icon">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIfkqHfIw6PAkYx7z0Ajpd9rafjgguZYtFVA&s" alt="Tokopedia">
+                        </div>
+                        <div class="platform-info">
+                            <h4>Tokopedia</h4>
+                            <p>Tersedia di official store Tokopedia</p>
+                            <a href="https://tokopedia.com" class="btn-platform" target="_blank">Kunjungi Tokopedia</a>
+                        </div>
+                    </div>
+
+                    <!-- TikTok Shop -->
+                    <div class="platform-item">
+                        <div class="platform-icon">
+                            <img src="https://www.svgrepo.com/show/327400/logo-tiktok.svg" alt="TikTok Shop">
+                        </div>
+                        <div class="platform-info">
+                            <h4>TikTok Shop</h4>
+                            <p>Belanja langsung di TikTok Shop kami</p>
+                            <a href="https://www.tiktok.com/@yourusername/shop" class="btn-platform" target="_blank">Kunjungi TikTok Shop</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Food Delivery Platforms -->
+            <div class="platform-category">
+                <h3>Food Delivery</h3>
+                <div class="platform-items">
+                    <div class="platform-item">
+                        <div class="platform-icon">
+                            <img src="https://images.seeklogo.com/logo-png/40/2/gofood-logo-png_seeklogo-405048.png" alt="GoFood">
+                        </div>
+                        <div class="platform-info">
+                            <h4>GoFood</h4>
+                            <p>Pesan melalui GoFood untuk pengantaran cepat</p>
+                            <a href="https://gojek.com/gofood" class="btn-platform" target="_blank">Pesan di GoFood</a>
+                        </div>
+                    </div>
+                    <div class="platform-item">
+                        <div class="platform-icon">
+                            <img src="https://iconlogovector.com/uploads/images/2023/11/lg-655d63568932b-grab-food.png" alt="GrabFood">
+                         </div>
+                         <div class="platform-info">
+                            <h4>GrabFood</h4>
+                            <p>Pesan makanan favorit Anda lewat aplikasi GrabFood</p>
+                            <a href="https://food.grab.com/id/id" class="btn-platform" target="_blank">Pesan di GrabFood</a>
+                        </div>
+                    </div>
+                    <div class="platform-item">
+                        <div class="platform-icon">
+                            <img src="https://images.seeklogo.com/logo-png/39/1/shopee-food-indonesia-logo-png_seeklogo-397473.png" alt="Shopee Food">
+                        </div>
+                        <div class="platform-info">
+                            <h4>Shopee Food</h4>
+                            <p>Tersedia juga di Shopee Food</p>
+                            <a href="https://food.shopee.co.id" class="btn-platform" target="_blank">Pesan di Shopee Food</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <!-- Testimonials Section -->
     <section class="section" id="testimonials">
@@ -726,7 +1191,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Hubungi Kami</h2>
-                <p>Pesan sekarang juga dan nikmati kelezatan hidangan kami</p>
+                <p>Pesan sekarang juga dan nikmati kelezatan hidangan premium kami</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
@@ -752,10 +1217,9 @@
                     <h3>Ikuti Kami</h3>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/628174160588"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://wa.me/628174160588"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://wa.me/628174160588" target="_blank"> <i class="fab fa-whatsapp"></i></a>
-
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/628174160588" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -786,7 +1250,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Mari Rasa</h3>
-                    <p>Menghadirkan kenikmatan rasa masakan rumahan yang hangat dan lezat untuk keluarga Indonesia.</p>
+                    <p>Menghadirkan kenikmatan rasa makanan premium yang praktis dan lezat untuk keluarga Indonesia.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Tautan Cepat</h3>
@@ -794,6 +1258,7 @@
                         <li><a href="#home">Beranda</a></li>
                         <li><a href="#about">Tentang Kami</a></li>
                         <li><a href="#products">Produk</a></li>
+                        <li><a href="#platform">Beli di Platform</a></li>
                         <li><a href="#testimonials">Testimoni</a></li>
                         <li><a href="#contact">Kontak</a></li>
                     </ul>
@@ -810,18 +1275,42 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Mari Rasa. All Rights Reserved.</p>
+                <p>&copy; 2023 Mari Rasa|EsaSolution. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle dengan improved functionality
         document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+            
+            // Toggle icon menu
+            const icon = this.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
 
-        // Smooth Scrolling
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                const navLinks = document.querySelector('.nav-links');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const icon = mobileMenu.querySelector('i');
+                
+                navLinks.classList.remove('active');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Smooth Scrolling dengan offset untuk fixed header
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -831,8 +1320,11 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+                    
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetPosition,
                         behavior: 'smooth'
                     });
                 }
@@ -846,14 +1338,46 @@
             this.reset();
         });
 
-        // Sticky Header
+        // Sticky Header dengan improved performance
+        let scrollTimer;
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
-            if(window.scrollY > 100) {
-                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-            } else {
-                header.style.boxShadow = 'none';
-            }
+            
+            clearTimeout(scrollTimer);
+            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            
+            scrollTimer = setTimeout(function() {
+                if(window.scrollY === 0) {
+                    header.style.boxShadow = 'none';
+                }
+            }, 150);
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.section-title, .product-card, .platform-item, .testimonial-card');
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
         });
     </script>
 </body>
