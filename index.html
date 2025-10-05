@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mari Rasa - Nikmat Hangat dari Dapur Kami</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #e74c3c;
+            --secondary: #2c3e50;
+            --accent: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* About Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Products Section */
+        .products {
+            background-color: var(--light);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--dark);
+            color: white;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact .section-title p {
+            color: #ccc;
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-item i {
+            margin-right: 15px;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .form-control::placeholder {
+            color: #ccc;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <h1>Mari Rasa</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#testimonials">Testimoni</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Nikmat Hangat dari Dapur Kami</h2>
+                <p>Menikmati hidangan lezat kini lebih mudah. Dim Sum Frozen premium, Risoles Mayo yang lumer, Donat Kentang lembut, dan aneka roti fresh. Pesan online, kami antar sampai depan pintu.</p>
+                <a href="#products" class="btn">Lihat Produk</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang Kami</h2>
+                <p>Mari Rasa lahir dari kecintaan akan rasa masakan rumahan yang hangat dan nikmat.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Kenapa Memilih Mari Rasa?</h3>
+                    <p>Kami berkomitmen menggunakan bahan-bahan pilihan terbaik, diolah secara higienis, dan dikemas dengan baik untuk menjaga cita rasa serta kualitasnya sampai ke tangan Anda.</p>
+                    <p>Setiap produk kami dibuat dengan penuh perhatian dan kasih sayang, seperti memasak untuk keluarga sendiri. Kami percaya bahwa makanan enak tidak harus mahal, tetapi harus selalu berkualitas.</p>
+                    <p>Dengan pengalaman bertahun-tahun di industri kuliner, kami menghadirkan inovasi rasa yang unik dan menggugah selera.</p>
+                    <a href="#contact" class="btn" style="margin-top: 20px;">Hubungi Kami</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Dapur Mari Rasa">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Produk Kami</h2>
+                <p>Berbagai pilihan makanan lezat siap santap dan frozen food berkualitas</p>
+            </div>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.pexels.com/photos/3728295/pexels-photo-3728295.jpeg" alt="Dim Sum Frozen">
+                    </div>
+                    <div class="product-info">
+                        <h3>Dim Sum Frozen</h3>
+                        <p>Dim sum homemade dengan isian ayam dan udang yang melimpah. Kulitnya tipis dan kenyal. Praktis, cukup kukus selama 10 menit.</p>
+                        <div class="product-price">
+                            <span class="price">Rp 25.000/pack</span>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Dim%20Sum%20Frozen" class="btn" target="_blank">Pesan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://media.istockphoto.com/id/1427053863/id/foto/risol-mayoy-atau-mayones-risole.jpg?s=1024x1024&w=is&k=20&c=9xnOCYB-iM7c38Gyjx8LU5r9lnZEZf_MmhCWPQ8Rxsc=" alt="Risoles Mayo">
+                    </div>
+                    <div class="product-info">
+                        <h3>Risoles Mayo</h3>
+                        <p>Kulit risoles yang renyah berpadu dengan isian mayo, daging, dan sayuran yang gurih dan lumer. Cocok untuk camilan keluarga.</p>
+                        <div class="product-price">
+                            <span class="price">Rp 18.000/pack</span>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Risoles%20Mayo" class="btn" target="_blank">Pesan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.pexels.com/photos/30922282/pexels-photo-30922282.jpeg?_gl=1*1i587h2*_ga*MjM2NDkxNDU5LjE3NTk2NTAxMDY.*_ga_8JE65Q40S6*czE3NTk2NTAxMDUkbzEkZzEkdDE3NTk2NTAzNjAkajMzJGwwJGgw" alt="Donat Kentang">
+                    </div>
+                    <div class="product-info">
+                        <h3>Donat Kentang</h3>
+                        <p>Donat dengan tekstur super lembut dari campuran kentang pilihan. Tersedia dengan berbagai topping menarik.</p>
+                        <div class="product-price">
+                            <span class="price">Rp 5.000/biji</span>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Donat%20Kentang" class="btn" target="_blank">Pesan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.pexels.com/photos/3023479/pexels-photo-3023479.jpeg?_gl=1*10fru1l*_ga*MjM2NDkxNDU5LjE3NTk2NTAxMDY.*_ga_8JE65Q40S6*czE3NTk2NTAxMDUkbzEkZzEkdDE3NTk2NTA0MTMkajUyJGwwJGgw" alt="Roti Sosis">
+                    </div>
+                    <div class="product-info">
+                        <h3>Roti Sosis</h3>
+                        <p>Roti soft yang membungkus sosis sapi berkualitas, dengan olesan saus mayo dan saus tomat. Sempurna untuk sarapan atau bekal.</p>
+                        <div class="product-price">
+                            <span class="price">Rp 10.000/biji</span>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Roti%20Sosis" class="btn" target="_blank">Pesan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1609889132708-e31330e6c7a4?q=80&w=1734&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Roti Keju">
+                    </div>
+                    <div class="product-info">
+                        <h3>Roti Keju</h3>
+                        <p>Roti dengan taburan keju parut yang melimpah dan gurih. Simple namun selalu bikin ketagihan.</p>
+                        <div class="product-price">
+                            <span class="price">Rp 8.000/biji</span>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Roti%20Keju" class="btn" target="_blank">Pesan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Roti Krim Keju Anggur">
+                    </div>
+                    <div class="product-info">
+                        <h3>Roti Krim Keju Anggur</h3>
+                        <p>Perpaduan unik keju gurih dan krim anggur manis dalam satu gigitan. Rasanya yang creamy dan manis-gurih pasti disukai.</p>
+                        <div class="product-price">
+                            <span class="price">Rp 9.000/biji</span>
+                            <a href="https://wa.me/628174160588?text=Halo,%20saya%20mau%20pesan%20Roti%20Krim%20Keju%20Anggur" class="btn" target="_blank">Pesan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Apa Kata Pelanggan</h2>
+                <p>Testimoni dari pelanggan setia Mari Rasa</p>
+            </div>
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Dim Sum-nya enak banget, anak-anak suka! Pengirimannya juga cepat dan packingnya aman. Pasti order lagi!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">IS</div>
+                        <div class="author-info">
+                            <h4>Ibu Sari</h4>
+                            <p>Bandung</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Donat kentangnya lembut dan nggak bikin eneg. Topingnya juga banyak pilihan. Yang roti sosis juga enak, sausnya pas!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RA</div>
+                        <div class="author-info">
+                            <h4>Raka Aditya</h4>
+                            <p>Jakarta</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Risoles Mayonya juara! Lumer banget dalemannya. Cocok buat camilan sore ditemenin teh hangat. Pelayanannya juga ramah."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DM</div>
+                        <div class="author-info">
+                            <h4>Dewi Murni</h4>
+                            <p>Bandung</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
+                <p>Pesan sekarang juga dan nikmati kelezatan hidangan kami</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jl. Petojo Binatu 1 No 15 002/008</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62 817-4160-588</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@marirasa.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Buka Setiap Hari: 08.00 - 20.00 WIB</span>
+                        </div>
+                    </div>
+                    <h3>Ikuti Kami</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/628174160588"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/628174160588"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/628174160588" target="_blank"> <i class="fab fa-whatsapp"></i></a>
+
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" class="form-control" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Masukkan email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" class="form-control" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mari Rasa</h3>
+                    <p>Menghadirkan kenikmatan rasa masakan rumahan yang hangat dan lezat untuk keluarga Indonesia.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Tautan Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#testimonials">Testimoni</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Produk Kami</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Dim Sum Frozen</a></li>
+                        <li><a href="#">Risoles Mayo</a></li>
+                        <li><a href="#">Donat Kentang</a></li>
+                        <li><a href="#">Roti Sosis</a></li>
+                        <li><a href="#">Roti Keju</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Mari Rasa. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah berhasil dikirim. Kami akan segera menghubungi Anda.');
+            this.reset();
+        });
+
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
